@@ -1,0 +1,513 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Finance | Dashboard</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+
+	<!-- ================== BEGIN BASE CSS STYLE ================== --><link href ="{% static '../static/assets/plugins/jquery-ui/jquery-ui.min.css' %}" rel="stylesheet"/>
+    <link href="{% static '../static/assets/plugins/bootstrap/4.0.0/css/bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static '../static/assets/plugins/font-awesome/5.0/css/fontawesome-all.min.css' %}" rel="stylesheet" />
+	<link href="{% static '../static/assets/plugins/animate/animate.min.css'%}" rel="stylesheet" />
+	<link href="{% static '../static/assets/css/default/style.min.css' %}" rel="stylesheet" />
+	<link href="{% static '../static/assets/css/default/style-responsive.min.css' %}" rel="stylesheet" />
+	<link href="{% static '../static/assets/css/default/theme/default.css' %}" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="{% static '../static/assets/plugins/jquery-jvectormap/jquery-jvectormap.css' %}" rel="stylesheet" />
+    <link href="{% static '../static/assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css' %}" rel="stylesheet" />
+    <link href="{% static '../static/assets/plugins/gritter/css/jquery.gritter.css' %}" rel="stylesheet" />
+    <link href="{% static '../static/assets/plugins/nvd3/build/nv.d3.css' %}" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	 <script src="{% static '../static/assets/plugins/pace/pace.min.js' %}"></script>
+	<!-- ================== END BASE JS ================== -->
+<!-- </head> -->
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade show"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar-default">
+			<!-- begin navbar-header -->
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b>Finance</b></a>
+				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<!-- end navbar-header -->
+			
+			<!-- begin header-nav -->
+			<ul class="navbar-nav navbar-right">
+				<li>
+					<form class="navbar-form">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Enter keyword" />
+							<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+						</div>
+					</form>
+				</li>
+				<li class="dropdown">
+					<a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+						<i class="fa fa-bell"></i>
+						<span class="label">5</span>
+					</a>
+					<ul class="dropdown-menu media-list dropdown-menu-right">
+						<li class="dropdown-header">NOTIFICATIONS (5)</li>
+						<li class="media">
+							<a href="javascript:;">
+								<div class="media-left">
+									<i class="fa fa-bug media-object bg-silver-darker"></i>
+								</div>
+								<div class="media-body">
+									<h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
+									<div class="text-muted f-s-11">3 minutes ago</div>
+								</div>
+							</a>
+						</li>
+						<li class="media">
+							<a href="javascript:;">
+								<div class="media-left">
+									<img src="../assets/img/user/user-1.jpg" class="media-object" alt="" />
+									<i class="fab fa-facebook-messenger text-primary media-object-icon"></i>
+								</div>
+								<div class="media-body">
+									<h6 class="media-heading">John Smith</h6>
+									<p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+									<div class="text-muted f-s-11">25 minutes ago</div>
+								</div>
+							</a>
+						</li>
+						<li class="media">
+							<a href="javascript:;">
+								<div class="media-left">
+									<img src="../assets/img/user/user-2.jpg" class="media-object" alt="" />
+									<i class="fab fa-facebook-messenger text-primary media-object-icon"></i>
+								</div>
+								<div class="media-body">
+									<h6 class="media-heading">Olivia</h6>
+									<p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+									<div class="text-muted f-s-11">35 minutes ago</div>
+								</div>
+							</a>
+						</li>
+						<li class="media">
+							<a href="javascript:;">
+								<div class="media-left">
+									<i class="fa fa-plus media-object bg-silver-darker"></i>
+								</div>
+								<div class="media-body">
+									<h6 class="media-heading"> New User Registered</h6>
+									<div class="text-muted f-s-11">1 hour ago</div>
+								</div>
+							</a>
+						</li>
+						<li class="media">
+							<a href="javascript:;">
+								<div class="media-left">
+									<i class="fa fa-envelope media-object bg-silver-darker"></i>
+									<i class="fab fa-google text-warning media-object-icon f-s-14"></i>
+								</div>
+								<div class="media-body">
+									<h6 class="media-heading"> New Email From John</h6>
+									<div class="text-muted f-s-11">2 hour ago</div>
+								</div>
+							</a>
+						</li>
+						<li class="dropdown-footer text-center">
+							<a href="javascript:;">View more</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown navbar-user">
+					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+						<img src="../assets/img/user/user-13.jpg" alt="" /> 
+						<span class="d-none d-md-inline">Adam Schwartz</span> <b class="caret"></b>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="javascript:;" class="dropdown-item">Edit Profile</a>
+						<a href="javascript:;" class="dropdown-item"><span class="badge badge-danger pull-right">2</span> Inbox</a>
+						<a href="javascript:;" class="dropdown-item">Calendar</a>
+						<a href="javascript:;" class="dropdown-item">Setting</a>
+						<div class="dropdown-divider"></div>
+						<a href="javascript:;" class="dropdown-item">Log Out</a>
+					</div>
+				</li>
+			</ul>
+			<!-- end header navigation right -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						<a href="javascript:;" data-toggle="nav-profile">
+							<div class="cover with-shadow"></div>
+							<div class="image">
+								<img src="../assets/img/user/user-13.jpg" alt="" />
+							</div>
+							<div class="info">
+								<b class="caret pull-right"></b>
+								AIC Donholm Welfare
+								<small>Admin Panel</small>
+							</div>
+						</a>
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				<ul class="nav">
+					<li class="nav-header">Navigation</li>
+					<li class="has-sub active">
+						<a href="javascript:;">
+					        <!-- <b class="caret"></b> -->
+						    <i class="fa fa-th-large"></i>
+						    <span>Dashboard</span>
+					    </a>
+						<!-- <ul class="sub-menu">
+						    <li class="active"><a href="index.html">Dashboar</a></li>
+						</ul> -->
+					</li>
+					<li class="has-sub">
+						<a href="javascript:;">
+							<span class="badge pull-right">10</span>
+							<i class="fa fa-hdd"></i> 
+							<span>Email</span>
+						</a>
+						<ul class="sub-menu">
+						    <li><a href="email_inbox.html">Inbox</a></li>
+						    <li><a href="email_compose.html">Compose</a></li>
+						    <li><a href="email_detail.html">Detail</a></li>
+						</ul>
+					</li>
+					
+					
+					<li class="has-sub">
+						<a href="javascript:;">
+					        <b class="caret"></b>
+						    <i class="fa fa-table"></i>
+						    <span>Members</span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="table_basic.html">Add Members</a></li>
+							<li><a href="view_members.html">View Members</a></li>
+							
+						</ul>
+					</li>
+				<li class="has-sub">
+					    <a href="javascript:;">
+					        <b class="caret"></b>
+					        <i class="fa fa-chart-pie"></i>
+						    <span>Chart</span>
+						</a>
+						<ul class="sub-menu">
+						    <li><a href="chart-flot.html">Flot Chart</a></li>
+						    <li><a href="chart-morris.html">Morris Chart</a></li>
+							<li><a href="chart-js.html">Chart JS</a></li>
+						    <li><a href="chart-d3.html">d3 Chart</a></li>
+						</ul>
+					</li>
+					<li><a href="calendar.html"><i class="fa fa-calendar"></i> <span>Calendar</span></a></li>
+					
+					<li class="has-sub">
+						<a href="javascript:;">
+					        <b class="caret"></b>
+						    <i class="fa fa-cogs"></i>
+						    <span>Settings</span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="page_blank.html">Finance</a></li>
+							<li><a href="extra_invoice.html">Invoice</a></li>
+							
+						</ul>
+					</li>
+				
+					<li class="has-sub">
+					    <a href="javascript:;">
+					        <b class="caret"></b>
+					        <i class="fa fa-key"></i>
+					        <span>Login & Register</span>
+					    </a>
+					    <ul class="sub-menu">
+							<li><a href="login.html">Login</a></li>
+					        <li><a href="register_v3.html">Register</a></li>
+					    </ul>
+					</li>
+					
+					
+					
+			        <!-- begin sidebar minify button -->
+					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+			        <!-- end sidebar minify button -->
+				</ul>
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+				<li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+				<li class="breadcrumb-item active">Dashboard </li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header"> Admin<small> Dashboard</small></h1>
+			<!-- end page-header -->
+			<!-- begin row -->
+			<div class="row">
+			    <!-- begin col-3 -->
+			    <div class="col-lg-3 col-md-6">
+			        <div class="widget widget-stats bg-gradient-green">
+						<div class="stats-icon stats-icon-lg"><i class="fa fa-globe fa-fw"></i></div>
+			        	<div class="stats-content">
+							<div class="stats-title">MEMBERS REGISTERED</div>
+							<div class="stats-number">40</div>
+							<div class="stats-progress progress">
+								<div class="progress-bar" style="width: 70.1%;"></div>
+							</div>
+							<div class="stats-desc">Better than last week (70.1%)</div>
+                        </div>
+			        </div>
+			    </div>
+			    <!-- end col-3 -->
+			    <!-- begin col-3 -->
+			    <div class="col-lg-3 col-md-6">
+			        <div class="widget widget-stats bg-gradient-blue">
+			            <div class="stats-icon stats-icon-lg"><i class="fa fa-dollar-sign fa-fw"></i></div>
+						<div class="stats-content">
+							<div class="stats-title">TOTAL CASH CONTRIBUTED</div>
+							<div class="stats-number">180,200</div>
+							<div class="stats-progress progress">
+								<div class="progress-bar" style="width: 40.5%;"></div>
+							</div>
+							<div class="stats-desc">Better than last week (40.5%)</div>
+						</div>
+			        </div>
+			    </div>
+			    <!-- end col-3 -->
+			    <!-- begin col-3 -->
+			    <div class="col-lg-3 col-md-6">
+			        <div class="widget widget-stats bg-gradient-purple">
+			            <div class="stats-icon stats-icon-lg"><i class="fa fa-archive fa-fw"></i></div>
+			        	<div class="stats-content">
+							<div class="stats-title">TOTAL CASH DISBURSED</div>
+							<div class="stats-number">38,900</div>
+							<div class="stats-progress progress">
+								<div class="progress-bar" style="width: 76.3%;"></div>
+							</div>
+							<div class="stats-desc">Better than last week (76.3%)</div>
+						</div>
+			        </div>
+			    </div>
+			    <!-- end col-3 -->
+			    <!-- begin col-3 -->
+			    <div class="col-lg-3 col-md-6">
+			        <div class="widget widget-stats bg-gradient-black">
+			            <div class="stats-icon stats-icon-lg"><i class="fa fa-list-ol fa-fw"></i></div>
+			        	<div class="stats-content">
+							<div class="stats-title">NEW MEMBERS</div>
+							<div class="stats-number">3,988</div>
+							<div class="stats-progress progress">
+								<div class="progress-bar" style="width: 54.9%;"></div>
+							</div>
+							<div class="stats-desc">Better than last week (54.9%)</div>
+						</div>
+			        </div>
+			    </div>
+			    <!-- end col-3 -->
+			</div>
+			<!-- end row -->
+			
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-8 -->
+			    <div class="col-lg-8">
+			        <div class="widget-chart with-sidebar bg-black">
+			            <div class="widget-chart-content">
+			                <h4 class="chart-title">
+			                    Visitors Analytics
+			                    <small>Where do our visitors come from</small>
+			                </h4>
+			                <div id="visitors-line-chart" class="widget-chart-full-width nvd3-inverse-mode" style="height: 260px;"></div>
+			            </div>
+			            <div class="widget-chart-sidebar bg-black-darker">
+			                <div class="chart-number">
+			                    1,225,729
+			                    <small>Total visitors</small>
+			                </div>
+			                <div id="visitors-donut-chart" class="nvd3-inverse-mode p-t-10" style="height: 180px"></div>
+			                <ul class="chart-legend f-s-11">
+			                    <li><i class="fa fa-circle fa-fw text-primary f-s-9 m-r-5 t-minus-1"></i> 34.0% <span>New Visitors</span></li>
+			                    <li><i class="fa fa-circle fa-fw text-success f-s-9 m-r-5 t-minus-1"></i> 56.0% <span>Return Visitors</span></li>
+			                </ul>
+			            </div>
+			        </div>
+				</div>
+				
+			    <!-- end col-8 -->
+				<!-- begin col-4 -->
+				<div class="col-lg-4">
+			        <!-- begin panel -->
+			        <div class="panel panel-inverse" data-sortable-id="index-3">
+			            <div class="panel-heading">
+			                <h4 class="panel-title">Calendar</h4>
+			            </div>
+			            <div id="schedule-calendar" class="bootstrap-calendar"></div>
+			            <div class="list-group">
+                            <a href="javascript:;" class="list-group-item d-flex justify-content-between align-items-center text-ellipsis">
+                                Sales Reporting
+                                <span class="badge f-w-500 bg-gradient-green f-s-10">9:00 am</span>
+                            </a> 
+                            <a href="javascript:;" class="list-group-item d-flex justify-content-between align-items-center text-ellipsis">
+                                Have a meeting with sales team
+                                <span class="badge f-w-500 bg-gradient-blue f-s-10">2:45 pm</span>
+                            </a>
+                        </div>
+			        </div>
+			    </div>
+			    <!-- end col-4 -->
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+		
+		</div>
+		<!-- end #content -->
+		
+        <!-- begin theme-panel -->
+        <div class="theme-panel">
+            <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+            <div class="theme-panel-content">
+                <h5 class="m-t-0">Color Theme</h5>
+                <ul class="theme-list clearfix">
+                    <li class="active"><a href="javascript:;" class="bg-green" data-theme="default" data-theme-file="../assets/css/default/theme/default.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-red" data-theme="red" data-theme-file="../assets/css/default/theme/red.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-theme-file="../assets/css/default/theme/blue.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-theme-file="../assets/css/default/theme/purple.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-theme-file="../assets/css/default/theme/orange.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
+                    <li><a href="javascript:;" class="bg-black" data-theme="black" data-theme-file="../assets/css/default/theme/black.css" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a></li>
+                </ul>
+                <div class="divider"></div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Header Styling</div>
+                    <div class="col-md-7">
+                        <select name="header-styling" class="form-control form-control-sm">
+                            <option value="1">default</option>
+                            <option value="2">inverse</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label">Header</div>
+                    <div class="col-md-7">
+                        <select name="header-fixed" class="form-control form-control-sm">
+                            <option value="1">fixed</option>
+                            <option value="2">default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Sidebar Styling</div>
+                    <div class="col-md-7">
+                        <select name="sidebar-styling" class="form-control form-control-sm">
+                            <option value="1">default</option>
+                            <option value="2">grid</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label">Sidebar</div>
+                    <div class="col-md-7">
+                        <select name="sidebar-fixed" class="form-control form-control-sm">
+                            <option value="1">fixed</option>
+                            <option value="2">default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Sidebar Gradient</div>
+                    <div class="col-md-7">
+                        <select name="content-gradient" class="form-control form-control-sm">
+                            <option value="1">disabled</option>
+                            <option value="2">enabled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Content Styling</div>
+                    <div class="col-md-7">
+                        <select name="content-styling" class="form-control form-control-sm">
+                            <option value="1">default</option>
+                            <option value="2">black</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-12">
+                        <a href="javascript:;" class="btn btn-inverse btn-block btn-sm" data-click="reset-local-storage">Reset Local Storage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end theme-panel -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	 <script src="{% static '../static/assets/plugins/jquery/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static '../static/assets/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+	<script src="{% static '../static/assets/plugins/bootstrap/4.0.0/js/bootstrap.bundle.min.js' %}"></script>
+	<!--[if lt IE 9]>
+	<script src="{% static '../static/assets/crossbrowserjs/html5shiv.js' %}"></script>
+	<script src="{% static '../static/assets/crossbrowserjs/respond.min.js' %}"></script>
+	<script src="{% static '../static/assets/crossbrowserjs/excanvas.min.js' %}"></script>
+	<![endif]-->
+	<script src="{% static '../static/assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+	<script src="{% static '../static/assets/plugins/js-cookie/js.cookie.js' %}"></script>
+	<script src="{% static '../static/assets/js/theme/default.min.js' %}"></script>
+	<script src="{% static '../static/assets/js/apps.min.js' %}"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js"></script>
+    <script src="{% static '../static/assets/plugins/nvd3/build/nv.d3.js' %}"></script>
+    <script src="{% static '../static/assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js' %}"></script>
+    <script src="{% static '../static/assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js' %}"></script>
+    <script src="{% static '../static/assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js' %}"></script>
+	<script src="{% static '../static/assets/plugins/gritter/js/jquery.gritter.js' %}"></script>
+	<script src="{% static '../static/assets/js/demo/dashboard-v2.min.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			App.init();
+			DashboardV2.init();
+		});
+	</script>
+	
+</body>
+</html>
